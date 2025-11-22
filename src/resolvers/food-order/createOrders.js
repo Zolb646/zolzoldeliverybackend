@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import { UserModel } from "../../model/authModel.js";
 import { CounterModel } from "../../model/countModel.js";
 import { foodOrderModel } from "../../model/foodOrderModel.js";
@@ -6,21 +5,6 @@ import { FoodModel } from "../../model/foodModel.js";
 
 export const createFoodOrder = async (req, res) => {
   try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res
-        .status(401)
-        .json({ message: "Access denied. No token provided." });
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    if (!verified) {
-      return res.status(403).json({ message: "Invalid or expired token." });
-    }
-
     const { cart, status, shippingCost = 0 } = req.body;
 
     if (!cart || !Array.isArray(cart) || cart.length === 0) {
