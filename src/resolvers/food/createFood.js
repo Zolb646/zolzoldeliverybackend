@@ -2,11 +2,19 @@ import { FoodModel } from "../../model/foodModel.js";
 
 export const createFood = async (req, res) => {
   try {
+    let finalImageUrl;
+
+    if (req.file) {
+      finalImageUrl = req.file.path;
+    }
+    if (!finalImageUrl) {
+      return res.status(400).json({ message: "Image required" });
+    }
     const food = await FoodModel.create({
       foodName: req.body.foodName,
       price: req.body.price,
-      imageUrl: req.body.imageUrl || "",
-      category: req.body.category || "",
+      imageUrl: finalImageUrl,
+      category: req.body.category,
       ingredients: req.body.ingredients || "",
     });
 
