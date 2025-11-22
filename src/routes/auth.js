@@ -9,8 +9,8 @@ import { admin } from "../middleware/adminMiddleware.js";
 
 export const AuthRouter = express.Router();
 
-AuthRouter.get("/", protect, admin, getUsers);
-AuthRouter.post("/", signUpUsers);
+AuthRouter.get("/refresh", protect, admin, getUsers);
+AuthRouter.post("/sign-up", signUpUsers);
 AuthRouter.post("/login", signInUser);
 AuthRouter.patch("/:userId", protect, admin, updateUser);
 AuthRouter.delete("/:userId", protect, admin, deleteUser);
