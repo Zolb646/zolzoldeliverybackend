@@ -2,6 +2,7 @@ import { foodOrderModel } from "../../model/foodOrderModel.js";
 
 export const getFoodOrderById = async (req, res) => {
   try {
+    const userId = req.params.userId;
     const orders = await foodOrderModel
       .find({ user: userId })
       .populate("user", "-password")
