@@ -9,15 +9,6 @@ export const deleteFoodOrder = async (req, res) => {
       return res.status(404).json({ message: "Order not found." });
     }
 
-    if (
-      order.user.toString() !== verified.id &&
-      verified.role.toLowerCase() !== "admin"
-    ) {
-      return res.status(403).json({
-        message: "Access denied. You can only delete your own orders.",
-      });
-    }
-
     const deletedOrder = await foodOrderModel.findByIdAndDelete(deleteId);
 
     res.status(200).json({
