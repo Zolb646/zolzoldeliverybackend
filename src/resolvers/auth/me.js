@@ -8,9 +8,9 @@ export const Me = async (req, res) => {
   }
   const token = localToken.split(" ")[1];
   try {
-    const { id } = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await UserModel.findById(id);
-    console.log("DECODED TOKEN ID:", id);
+    const { userId } = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await UserModel.findById(userId);
+    console.log("DECODED TOKEN ID:", userId);
     console.log("FOUND USER:", user);
 
     res.status(200).json({ user });
