@@ -2,7 +2,7 @@ import { FoodModel } from "../../model/foodModel.js";
 
 export const getFoodsByCategory = async (req, res) => {
   try {
-    const getCategoryId = req.params.getCategoryId;
+    const getCategoryId = req.params.categoryId;
 
     const foodsByCategory = await FoodModel.find({
       category: getCategoryId,
