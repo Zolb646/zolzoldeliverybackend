@@ -2,7 +2,8 @@ import jwt from "jsonwebtoken";
 import { UserModel } from "../../model/authModel.js";
 
 export const Me = async (req, res) => {
-  const token = req.headers.authorization;
+  const localToken = req.headers.authorization;
+  const token = localToken.split(" ")[1];
   try {
     const { id } = jwt.verify(token, process.env.JWT_SECRET);
     const user = await UserModel.findById(id);
