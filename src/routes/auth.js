@@ -13,6 +13,7 @@ export const AuthRouter = express.Router();
 AuthRouter.get("/refresh", protect, admin, getUsers);
 AuthRouter.post("/sign-up", signUpUsers);
 AuthRouter.get("/check-email", checkEmail);
+AuthRouter.get("/me");
 AuthRouter.post("/login", signInUser);
 AuthRouter.patch("/:userId", protect, admin, updateUser);
 AuthRouter.delete("/:userId", protect, admin, deleteUser);
