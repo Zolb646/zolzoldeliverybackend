@@ -7,13 +7,14 @@ import { signInUser } from "../resolvers/auth/sign-in.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { admin } from "../middleware/adminMiddleware.js";
 import { checkEmail } from "../middleware/checkEmail.js";
+import { Me } from "../resolvers/auth/me.js";
 
 export const AuthRouter = express.Router();
 
 AuthRouter.get("/refresh", protect, admin, getUsers);
 AuthRouter.post("/sign-up", signUpUsers);
 AuthRouter.get("/check-email", checkEmail);
-AuthRouter.get("/me");
+AuthRouter.get("/me", Me);
 AuthRouter.post("/login", signInUser);
 AuthRouter.patch("/:userId", protect, admin, updateUser);
 AuthRouter.delete("/:userId", protect, admin, deleteUser);
