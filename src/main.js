@@ -11,13 +11,14 @@ dotenv.config({ path: ".env.local" });
 const app = express();
 const PORT = 8000;
 
-app.use(express.json());
 app.use(cors());
 
 app.use("/auth", AuthRouter);
 app.use("/food", FoodRouter);
 app.use("/food-category", FoodCategoryRouter);
 app.use("/food-order", FoodOrderRouter);
+
+app.use(express.json());
 
 connectDB();
 

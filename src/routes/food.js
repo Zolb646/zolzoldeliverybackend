@@ -13,5 +13,11 @@ export const FoodRouter = express.Router();
 FoodRouter.get("/", getFoods);
 FoodRouter.get("/:categoryId", getFoodsByCategory);
 FoodRouter.post("/", protect, admin, upload.single("image"), createFood);
-FoodRouter.patch("/:foodId", protect, admin, updateFoodDetails);
+FoodRouter.patch(
+  "/:foodId",
+  protect,
+  admin,
+  upload.single("image"),
+  updateFoodDetails
+);
 FoodRouter.delete("/:foodId", protect, admin, deleteFood);
