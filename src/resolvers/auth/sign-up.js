@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 export const signUpUsers = async (req, res) => {
   try {
-    const { email, password, phoneNumber, address, role } = req.body;
+    const { email, password, phoneNumber, address } = req.body;
 
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
@@ -17,7 +17,6 @@ export const signUpUsers = async (req, res) => {
       password: hashedPassword,
       phoneNumber: phoneNumber || "",
       address: address || "",
-      role: role || "USER",
     });
 
     res.status(201).json({
