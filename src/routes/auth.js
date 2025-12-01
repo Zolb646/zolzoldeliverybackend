@@ -16,5 +16,5 @@ AuthRouter.post("/sign-up", signUpUsers);
 AuthRouter.get("/check-email", checkEmail);
 AuthRouter.get("/me", protect, Me);
 AuthRouter.post("/login", signInUser);
-AuthRouter.patch("/:userId", protect, admin, updateUser);
+AuthRouter.patch("/:userId", protect, updateUser);
 AuthRouter.delete("/:userId", protect, admin, deleteUser);
